@@ -22,4 +22,37 @@ async function createAirplan(req, res) {
   }
 }
 
-module.exports = { createAirplan };
+/**
+ * GET : /airplanes
+ * req-body {}
+ */
+
+async function getAirplanes(req, res) {
+  try {
+    const airplanes = await AirplanService.getAirplans();
+
+    SuccessResponse.data = airplanes;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.errors = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
+/**
+ * GET : /airplanes/:id
+ * req-body {}
+ */
+
+async function getAirplane(req, res) {
+  try {
+    const airplane = await AirplanService.getAirplane(req.params.id);
+    SuccessResponse.errors = airplane;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.errors = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
+module.exports = { createAirplan, getAirplanes, getAirplane };

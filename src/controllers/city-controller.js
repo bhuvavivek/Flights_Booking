@@ -18,6 +18,47 @@ async function createCity(req, res) {
   }
 }
 
+/**
+ * DELETE : /cities/:id
+ * req-body {}
+ */
+
+async function destroyCity(req, res) {
+  try {
+    const city = await CityService.destroyCity(req.params.id);
+    SuccessResponse.data = city;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.errors = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
+/**
+ * PATCH : /cities/:id
+ * req-body  {
+        name: "VARANSI"
+      }
+ */
+
+async function updateCity(req, res) {
+  try {
+    const city = await CityService.updateCity(
+      {
+        name: req.body.name,
+      },
+      req.params.id
+    );
+    SuccessResponse.data = city;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.errors = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
 module.exports = {
   createCity,
+  destroyCity,
+  updateCity,
 };

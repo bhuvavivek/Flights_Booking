@@ -72,14 +72,20 @@ async function destroyAirplane(req, res) {
 }
 
 /**
- * DELETE : /airplanes/:id
- * req-body {}
+ * PATCH : /airplanes/:id
+ * req-body  {
+        modelNumber: "airbus210",
+        capacity: "200",
+      }
  */
 
 async function updateAirplane(req, res) {
   try {
     const airplane = await AirplanService.updateAirplane(
-      req.body,
+      {
+        modelNumber: req.body.modelNumber,
+        capacity: req.body.capacity,
+      },
       req.params.id
     );
     SuccessResponse.data = airplane;
@@ -89,6 +95,7 @@ async function updateAirplane(req, res) {
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
+
 module.exports = {
   createAirplan,
   getAirplanes,

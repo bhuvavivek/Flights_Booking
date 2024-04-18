@@ -7,8 +7,8 @@ const { ErrorResponse, SuccessResponse } = require("../utils/common");
  * req-body {
  *  flightNumber: 'UK 808' ,
  *  airplaneId:'a380',
- *  departureAirportId:'11',
- *  arrivalAirportId:'12',
+ *  departureAirportId:'DEL',
+ *  arrivalAirportId:'BLR',
  *  arrivalTime:"11:10:00",
  *  departureTime:"9:10:00",
  *  price:2000,
@@ -38,6 +38,22 @@ async function createFlight(req, res) {
   }
 }
 
+/**
+ * GET : /flights?trips=DEL_BLR
+ * req-body:{}
+ */
+async function getAllFlight(req, res) {
+  try {
+    const flights = await FlightService.getAllFlights(req.query);
+    SuccessResponse.data = flights;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.errors = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
 module.exports = {
   createFlight,
+  getAllFlight,
 };

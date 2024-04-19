@@ -42,7 +42,7 @@ async function createFlight(req, res) {
  * GET : /flights?trips=DEL_BLR
  * req-body:{}
  */
-async function getAllFlight(req, res) {
+async function getAllFlights(req, res) {
   try {
     const flights = await FlightService.getAllFlights(req.query);
     SuccessResponse.data = flights;
@@ -55,5 +55,5 @@ async function getAllFlight(req, res) {
 
 module.exports = {
   createFlight,
-  getAllFlight,
+  getAllFlights,
 };

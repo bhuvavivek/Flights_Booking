@@ -20,7 +20,7 @@ async function createAirport(req, res) {
 
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -37,7 +37,7 @@ async function getAirports(req, res) {
     SuccessResponse.data = airports;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -53,7 +53,7 @@ async function getAirport(req, res) {
     SuccessResponse.data = airport;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -69,7 +69,7 @@ async function destroyAirport(req, res) {
     SuccessResponse.data = airport;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -96,7 +96,7 @@ async function updateAirport(req, res) {
     SuccessResponse.data = airport;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }

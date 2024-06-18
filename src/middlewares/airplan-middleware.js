@@ -6,7 +6,7 @@ function validateCreateRequest(req, res, next) {
   if (!req.modelNumber) {
     ErrorResponse.message = "Something went Wrong While creating airplane";
 
-    ErrorResponse.errors = new AppError(
+    ErrorResponse.error = new AppError(
       ["Model Number not found in incoming request in the correct form"],
       StatusCodes.BAD_REQUEST
     );

@@ -13,7 +13,7 @@ async function createCity(req, res) {
     SuccessResponse.data = city;
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -29,7 +29,7 @@ async function destroyCity(req, res) {
     SuccessResponse.data = city;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -52,7 +52,7 @@ async function updateCity(req, res) {
     SuccessResponse.data = city;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }

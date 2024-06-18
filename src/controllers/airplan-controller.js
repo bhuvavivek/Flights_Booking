@@ -17,7 +17,7 @@ async function createAirplan(req, res) {
 
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -34,7 +34,7 @@ async function getAirplanes(req, res) {
     SuccessResponse.data = airplanes;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -50,7 +50,7 @@ async function getAirplane(req, res) {
     SuccessResponse.data = airplane;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -66,7 +66,7 @@ async function destroyAirplane(req, res) {
     SuccessResponse.data = airplane;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
@@ -91,7 +91,7 @@ async function updateAirplane(req, res) {
     SuccessResponse.data = airplane;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
-    ErrorResponse.errors = error;
+    ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
